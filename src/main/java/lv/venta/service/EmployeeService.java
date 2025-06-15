@@ -1,6 +1,5 @@
 package lv.venta.service;
 
-import lv.venta.model.Attendance;
 import lv.venta.model.Employee;
 
 import java.util.List;

@@ -17,6 +17,12 @@
         <li class="nav-item"><a class="nav-link" th:href="@{/shift}">Shifts</a></li>
         <li class="nav-item"><a class="nav-link" th:href="@{/attendance}">Attendance</a></li>
         <li class="nav-item"><a class="nav-link" th:href="@{/leave}">Leave</a></li>
+        <!-- PDF Download nav link -->
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:8080/pdf.pdf" target="_blank">
+            Download PDF
+          </a>
+        </li>
       </ul>
       <span class="navbar-text">
         <a href="https://github.com/pdidzis/Final_Project" target="_blank">GitHub</a>
@@ -24,6 +30,7 @@
     </div>
   </div>
 </nav>
+
 <div class="container mt-4">
   <h1>Welcome to the HR Management System</h1>
   <p>Use the navigation above to manage:</p>
@@ -34,6 +41,13 @@
     <li><a th:href="@{/attendance}">Attendance Records</a></li>
     <li><a th:href="@{/leave}">Leave Requests</a></li>
   </ul>
+
+  <!-- Inline PDF download link -->
+  <div class="mt-3">
+    <a href="http://localhost:8080/pdf.pdf" class="btn btn-primary" target="_blank">
+      📄 Download Course Project PDF
+    </a>
+  </div>
 </div>
 </body>
 </html>

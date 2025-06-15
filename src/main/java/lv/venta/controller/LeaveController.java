@@ -1,6 +1,5 @@
 package lv.venta.controller;
 
-import lv.venta.model.Employee;
 import lv.venta.model.Leave;
 import lv.venta.repository.EmployeeRepository;
 import lv.venta.repository.LeaveRepository;
