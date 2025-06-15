@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${department.did == null ? 'Add Department' : 'Update Department'}">Form</title>
+</head>
+<body>
+
+<h1 th:text="${department.did == null ? 'Add Department' : 'Update Department'}"></h1>
+
+<form th:action="@{${department.did == null} ? '/department/add' : '/department/update/' + ${department.did}}" 
+      th:object="${department}" method="post">
+
+    <ul style="color:red;" th:if="${#fields.hasErrors('*')}">
+        <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+    </ul>
+
+    <input type="hidden" th:field="*{did}" />
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required />
+    <div style="color:red;" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+    <br/><br/>
+
+    <label for="location">Location:</label>
+    <input type="text" id="location" th:field="*{location}" required />
+    <div style="color:red;" th:if="${#fields.hasErrors('location')}" th:errors="*{location}"></div>
+    <br/><br/>
+
+    <button type="submit">Submit</button>
+</form>
+
+<p><a href="/department">← Back to Department List</a></p>
+
+</body>
+</html>

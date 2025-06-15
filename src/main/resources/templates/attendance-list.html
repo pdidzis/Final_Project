@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance Records</title>
+</head>
+<body>
+<h1>Attendance Records</h1>
+
+<div th:if="${box != null}">
+    <p th:if="${box instanceof T(java.lang.String)}" th:text="${box}"></p>
+    
+    <table th:if="${box instanceof T(java.util.List)}" border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Employee</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="att : ${box}">
+            <td th:text="${att.aid}"></td>
+            <td th:text="${att.employee.name} + ' ' + ${att.employee.surname}"></td>
+            <td th:text="${att.date}"></td>
+            <td>
+                <a th:href="@{/attendance/remove/{id}(id=${att.aid})}">Remove</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<p><a href="/attendance/add">Add New Attendance</a></p>
+
+</body>
+</html>

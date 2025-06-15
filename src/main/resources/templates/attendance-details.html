@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance Details</title>
+</head>
+<body>
+    <h1>Attendance Details</h1>
+    <p>ID: <span th:text="${attendance.id}"></span></p>
+    <p>Employee: <span th:text="${attendance.employee.name} + ' ' + ${attendance.employee.surname}"></span></p>
+    <p>Date: <span th:text="${attendance.date}"></span></p>
+    <p>Shift: <span th:text="${attendance.employee.shift.name}"></span></p>
+    <a href="/attendance">Back</a>
+</body>
+</html>

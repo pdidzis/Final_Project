@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Attendance</title>
+</head>
+<body>
+
+<h1>Add Attendance</h1>
+
+<form th:action="@{/attendance/add}" th:object="${attendance}" method="post">
+    <label>Employee:</label>
+    <select th:field="*{employee}">
+		<option th:each="emp : ${employees}" 
+		        th:value="${emp.eid}" 
+		        th:text="${emp.name + ' ' + emp.surname}"></option>
+
+    </select>
+    <br><br>
+
+    <label>Date:</label>
+    <input type="date" th:field="*{date}" required/>
+    <br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<p><a href="/attendance">Back to Attendance List</a></p>
+
+</body>
+</html>

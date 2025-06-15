@@ -1,0 +1,20 @@
+<form th:action="@{/leave/add}" th:object="${leave}" method="post">
+    <label>Employee:</label>
+    <select th:field="*{employee}">
+        <option th:each="emp : ${employees}" 
+                th:value="${emp.eid}" 
+                th:text="${emp.name + ' ' + emp.surname}"></option>
+    </select>
+    <br><br>
+
+	
+    <label>Start Date:</label>
+    <input type="date" th:field="*{startDate}" required/>
+    <br><br>
+
+    <label>End Date:</label>
+    <input type="date" th:field="*{endDate}" required/>
+    <br><br>
+
+    <button type="submit">Submit</button>
+</form>

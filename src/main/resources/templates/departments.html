@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Departments</title>
+</head>
+<body>
+
+<h1>Department List</h1>
+
+
+<p th:if="${box instanceof T(java.lang.String)}" style="color:red;" th:text="${box}"></p>
+
+
+<table th:if="${box instanceof T(java.util.List)}" border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="dept : ${box}">
+            <td th:text="${dept.name}">Department Name</td>
+            <td th:text="${dept.location}">Department Location</td>
+            <td>
+                <a th:href="@{/department/update/{id}(id=${dept.did})}">Update</a> |
+                <a th:href="@{/department/remove/{id}(id=${dept.did})}">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p><a href="/department/add">Add New Department</a></p>
+
+</body>
+</html>

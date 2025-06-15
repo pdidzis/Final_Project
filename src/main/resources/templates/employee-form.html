@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add/Edit Employee</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+    <h1 th:text="${employee.eid != null} ? 'Edit Employee' : 'Add Employee'"></h1>
+    <form th:action="@{/employee/add}" th:object="${employee}" method="post">
+        <!-- Hidden field for eid if editing -->
+        <input type="hidden" th:field="*{eid}" />
+
+        <!-- Name -->
+        <div>
+            <label for="name">First Name:</label>
+            <input type="text" id="name" th:field="*{name}" required />
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></span>
+        </div>
+
+        <!-- Surname -->
+        <div>
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname" th:field="*{surname}" required />
+            <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" style="color: red;"></span>
+        </div>
+
+        <!-- Position -->
+        <div>
+            <label for="position">Position:</label>
+            <input type="text" id="position" th:field="*{position}" required />
+            <span th:if="${#fields.hasErrors('position')}" th:errors="*{position}" style="color: red;"></span>
+        </div>
+
+        <!-- Role -->
+        <div>
+            <label for="role">Role:</label>
+            <select id="role" th:field="*{role}" required>
+                <option value="">Select Role</option>
+                <option th:each="r : ${roles}" th:value="${r}" th:text="${r}"></option>
+            </select>
+            <span th:if="${#fields.hasErrors('role')}" th:errors="*{role}" style="color: red;"></span>
+        </div>
+
+        <!-- Department -->
+        <div>
+            <label for="department">Department:</label>
+            <select id="department" th:field="*{department.did}" required>
+                <option value="">Select Department</option>
+                <option th:each="dept : ${departments}" th:value="${dept.did}" th:text="${dept.name}"></option>
+            </select>
+            <span th:if="${#fields.hasErrors('department')}" th:errors="*{department}" style="color: red;"></span>
+        </div>
+
+        <!-- Shift -->
+        <div>
+            <label for="shift">Shift:</label>
+            <select id="shift" th:field="*{shift.sid}" required>
+                <option value="">Select Shift</option>
+                <option th:each="sh : ${shifts}" th:value="${sh.sid}" th:text="${sh.name}"></option>
+            </select>
+            <span th:if="${#fields.hasErrors('shift')}" th:errors="*{shift}" style="color: red;"></span>
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+            <button type="submit">Save Employee</button>
+            <a href="/employee">Cancel</a>
+        </div>
+    </form>
+</body>
+</html>

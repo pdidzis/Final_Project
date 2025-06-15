@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Employees</title>
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+  <h2>Employees</h2>
+  <a th:href="@{/employee/add}" class="btn btn-primary mb-3">Add Employee</a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>EID</th><th>Name</th><th>Surname</th><th>Position</th>
+        <th>Role</th><th>Department</th><th>Shift</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="e : ${employees}">
+        <td th:text="${e.eid}"></td>
+        <td th:text="${e.name}"></td>
+        <td th:text="${e.surname}"></td>
+        <td th:text="${e.position}"></td>
+        <td th:text="${e.role}"></td>
+        <td th:text="${e.department.name}"></td>
+        <td th:text="${e.shift != null} ? ${e.shift.name} : 'None'"></td>
+        <td>
+          <a th:href="@{'/employee/edit/' + ${e.eid}}" class="btn btn-sm btn-warning">Edit</a>
+          <a th:href="@{'/employee/delete/' + ${e.eid}}" class="btn btn-sm btn-danger">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
